@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivonne Rivera | Protección y Ahorro Integral</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f2b46;
+            --primary-logo: #1408a6; /* Color azul de tu logo aprox */
+            --accent: #d4a373;
+            --accent-light: #f4f1de;
+            --text-dark: #2b2d42;
+            --text-light: #f8f9fa;
+            --success: #25d366;
+            --nav-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            padding-top: 80px; /* Espacio para el navbar fijo */
+        }
+
+        /* --- Animaciones --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        .animate-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .animate-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Menú de Navegación (BLANCO PARA TU LOGO) --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--nav-bg);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            height: 80px;
+        }
+
+        /* Contenedor del Logo de Ivonne */
+        .nav-logo {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 60px; /* Altura ideal para logo apilado */
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        /* Texto alternativo por si no carga el logo */
+        .logo-fallback {
+            color: var(--primary-logo);
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.1;
+            border-left: 3px solid var(--primary-logo);
+            padding-left: 10px;
+        }
+
+        .logo-fallback span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Menú Hamburguesa para Móviles */
+        .menu-toggle {
+            display: none;
+            color: var(--primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: calc(100vh - 80px);
+            background: linear-gradient(rgba(15, 43, 70, 0.65), rgba(15, 43, 70, 0.85)), 
+                        url('https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            max-width: 900px;
+            animation: fadeInUp 0.8s ease-out forwards;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin-bottom: 35px;
+            animation: fadeInUp 1s ease-out forwards;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        .hero-btn {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 16px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: fadeInUp 1.2s ease-out forwards;
+            transition: all 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
+        }
+
+        /* --- Resto del Contenido --- */
+        .section-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .intro-quote {
+            max-width: 900px; margin: 60px auto; padding: 40px;
+            text-align: center; background-color: var(--accent-light);
+            border-radius: 20px; font-style: italic; color: var(--primary);
+            font-size: 1.15rem; line-height: 1.8;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .section-title {
+            text-align: center; margin: 60px 20px 40px; font-size: 2.2rem; color: var(--primary);
+        }
+        .section-title::after {
+            content: ''; display: block; width: 60px; height: 4px;
+            background-color: var(--accent); margin: 10px auto 0; border-radius: 2px;
+        }
+
+        .plans-grid {
+            display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px;
+        }
+
+        .plan-card {
+            background: #fff; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02);
+            display: flex; flex-direction: column; transition: transform 0.3s ease;
+        }
+        .plan-card:hover { transform: translateY(-5px); }
+
+        .plan-img { height: 240px; width: 100%; object-fit: cover; }
+        .plan-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+
+        .plan-tag {
+            background-color: rgba(212, 163, 115, 0.15); color: var(--primary);
+            padding: 6px 14px; border-radius: 20px; font-size: 0.8rem;
+            font-weight: 600; align-self: flex-start; margin-bottom: 15px;
+        }
+
+        .plan-content h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 12px; }
+        .plan-content p { font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+
+        .accordion-btn {
+            width: 100%; background: #f1f5f9; border: none; padding: 15px;
+            text-align: left; font-size: 0.9rem; font-weight: 600; color: var(--primary);
+            border-radius: 10px; display: flex; justify-content: space-between;
+            align-items: center; cursor: pointer; transition: all 0.3s;
+        }
+        .accordion-btn:hover { background: #e2e8f0; }
+        .accordion-btn i { transition: transform 0.3s; }
+        .accordion-btn.active i { transform: rotate(180deg); }
+
+        .accordion-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
+            background: #fafafa; border-radius: 0 0 10px 10px;
+        }
+        .case-details { padding: 20px; font-size: 0.9rem; }
+        .case-table { width: 100%; border-collapse: collapse; }
+        .case-table td { padding: 8px 0; border-bottom: 1px dotted #cbd5e1; }
+        .case-table td:last-child { text-align: right; font-weight: 600; color: var(--primary); }
+
+        /* Formulario Contacto */
+        .contact-section {
+            background-color: var(--primary); color: var(--text-light);
+            padding: 60px 20px; border-radius: 40px 40px 0 0;
+        }
+        .contact-container { max-width: 600px; margin: 0 auto; }
+        .contact-section h2 { text-align: center; font-size: 2rem; margin-bottom: 12px; }
+        .contact-section p { text-align: center; font-size: 1rem; font-weight: 300; margin-bottom: 40px; color: #cbd5e1; }
+
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-size: 0.9rem; margin-bottom: 8px; color: var(--accent); font-weight: 600; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 16px; border: 1px solid rgba(255,255,255,0.15);
+            background-color: rgba(255,255,255,0.05); border-radius: 12px; color: white;
+            font-size: 1rem; outline: none; transition: all 0.3s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--accent); background-color: rgba(255,255,255,0.1);
+        }
+        .form-group select option { background-color: var(--primary); color: white; }
+
+        .whatsapp-btn {
+            width: 100%; background-color: var(--success); color: white; border: none;
+            padding: 18px; border-radius: 50px; font-size: 1.1rem; font-weight: 600;
+            display: flex; justify-content: center; align-items: center; gap: 12px;
+            cursor: pointer; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: all 0.3s;
+        }
+        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
+
+        /* Footer */
+        .footer-asesoras { background-color: #0b1f33; padding: 40px 20px; color: #94a3b8; font-size: 0.9rem; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
+        .cards-row { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+        .asesora-card { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border-left: 3px solid var(--accent); }
+        .asesora-card strong { color: white; display: block; font-size: 1.1rem; margin-bottom: 5px; }
+
+        /* WP Float */
+        .floating-wp {
+            position: fixed; bottom: 25px; right: 25px; background-color: var(--success); color: white;
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center;
+            align-items: center; font-size: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 999; text-decoration: none; animation: pulse 2s infinite;
+        }
+
+        /* MEDIA QUERIES (Responsivo) */
+        @media (min-width: 768px) {
+            .menu-toggle { display: none; }
+            .plans-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+            .hero h1 { font-size: 3.8rem; }
+            .cards-row { flex-direction: row; justify-content: center; gap: 40px; }
+            .asesora-card { flex: 1; max-width: 400px; text-align: left; }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                position: absolute; top: 100%; left: 0; width: 100%;
+                background-color: var(--nav-bg); flex-direction: column;
+                padding: 20px; gap: 15px; text-align: center; display: none;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/527221494745?text=Hola,%20me%20gustaría%20recibir%20asesoría%20sobre%20sus%20planes%20de%20seguro%20y%20ahorro." class="floating-wp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Navbar Superior Blanco -->
+    <nav class="navbar">
+        <a href="#" class="nav-logo">
+            <!-- AQUÍ VA TU LOGO: Solo asegúrate de que se llame logo.png y esté en la misma carpeta -->
+            <img src="logo.png" alt="Ivonne Rivera - Asesor en Seguros" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            
+            <!-- Este texto solo aparece si no encuentra el archivo logo.png -->
+            <div class="logo-fallback" style="display: none;">
+                I | R<br>
+                <span>IVONNE RIVERA</span>
+            </div>
+        </a>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="nav-list">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#planes">Nuestros Planes</a></li>
+            <li><a href="#contacto">Asesoría</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>La vida es hermosa llena de momentos maravillosos</h1>
+        <p>Elegir la confianza sobre el miedo es una decisión poderosa que transforma nuestra manera de vivir.</p>
+        <a href="#contacto" class="hero-btn">Agendar Asesoría Gratis</a>
+    </section>
+
+    <!-- Sección de Contenido Centrado -->
+    <main class="section-container">
+        <div class="intro-quote animate-fade">
+            "Proteger nuestro patrimonio, nuestra salud y nuestro bienestar financiero es un acto de amor y responsabilidad. No se trata de ignorar los riesgos, sino de estar preparados para afrontarlos con serenidad."
+        </div>
+
+        <section id="planes">
+            <h2 class="section-title animate-fade">Nuestros Planes de Protección</h2>
+            
+            <div class="plans-grid">
+                
+                <!-- PPR -->
+                <div class="plan-card animate-fade">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80" alt="Retiro" class="plan-img">
+                    <div class="plan-content">
+                        <span class="plan-tag">Retiro y Beneficios Fiscales</span>
+                        <h3>Ahorro para el Retiro (PPR)</h3>
+                        <p>No trabajes toda tu vida para depender de una pensión insuficiente. Construye tu propio fondo, protege a tu familia y aprovecha deducciones fiscales.</p>
+                        
+                        <button class="accordion-btn" onclick="toggleAccordion(this)">
+                            Ver Caso Práctico (Sebastián - 43 años) <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="case-details">
+                                <table class="case-table">
+                                    <tr><td>Aportación Mensual:</td><td>$4,042 MXN</td></tr>
+                                    <tr><td>Plazo:</td><td>10 años</td></tr>
+                                    <tr><td>Deducción Año 1:</td><td>$48,500 MXN</td></tr>
+                                    <tr><td>Fondo Estimado (65 años):</td><td>$1,504,674 MXN</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vida Mujer -->
+                <div class="plan-card animate-fade">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Vida Mujer" class="plan-img">
+                    <div class="plan-content">
+                        <span class="plan-tag">Protección Especializada</span>
+                        <h3>Vida Mujer</h3>
+                        <p>Diseñada para los riesgos que una mujer puede enfrentar: cáncer femenino, padecimientos ginecológicos y embarazo, combinando protección y ahorro.</p>
+                        
+                        <button class="accordion-btn" onclick="toggleAccordion(this)">
+                            Ver Caso Práctico (Elisa - 37 años) <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="case-details">
+                                <table class="case-table">
+                                    <tr><td>Aportación Mensual:</td><td>$2,341 MXN</td></tr>
+                                    <tr><td>Retornos cada 2 años:</td><td>5% Suma Asegurada</td></tr>
+                                    <tr><td>Final del plazo recibes:</td><td>80% Suma Asegurada</td></tr>
+                                    <tr><td>Total Recibido:</td><td>115% Suma Asegurada</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VPL -->
+                <div class="plan-card animate-fade">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Pagos Limitados" class="plan-img">
+                    <div class="plan-content">
+                        <span class="plan-tag">Legado Garantizado</span>
+                        <h3>Vida Pagos Limitados (VPL)</h3>
+                        <p>Planifica tus aportaciones en un periodo programado (10 años) para gozar de protección vitalicia. Opción a cobertura ante cáncer.</p>
+                        
+                        <button class="accordion-btn" onclick="toggleAccordion(this)">
+                            Ver Caso Práctico (Guillermo - 25 años) <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="case-details">
+                                <table class="case-table">
+                                    <tr><td>Aportación Mensual:</td><td>$2,045 MXN</td></tr>
+                                    <tr><td>Plazo obligatorio:</td><td>10 años</td></tr>
+                                    <tr><td>Suma Asegurada:</td><td>90,000 UDIS</td></tr>
+                                    <tr><td>Retiro (63 años):</td><td>$2,551,565 MXN</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Educación -->
+                <div class="plan-card animate-fade">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Educación" class="plan-img">
+                    <div class="plan-content">
+                        <span class="plan-tag">Garantía Educativa</span>
+                        <h3>Ahorro para la Educación</h3>
+                        <p>Construye el capital para la universidad de tus hijos. Si llegas a faltar, la meta de ahorro se entrega intacta cuando cumplan 18 años.</p>
+                        
+                        <button class="accordion-btn" onclick="toggleAccordion(this)">
+                            Ver Caso Práctico (Lía - 1 año) <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="case-details">
+                                <table class="case-table">
+                                    <tr><td>Aportación Mensual:</td><td>$1,967 MXN</td></tr>
+                                    <tr><td>Plazo de ahorro:</td><td>17 años</td></tr>
+                                    <tr><td>Suma Asegurada:</td><td>50,000 UDIS</td></tr>
+                                    <tr><td>Entrega (18 años):</td><td>$820,649 MXN</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Formulario WhatsApp -->
+    <section class="contact-section" id="contacto">
+        <div class="contact-container">
+            <h2>Solicita tu Asesoría Personalizada</h2>
+            <p>Déjanos tus datos mínimos y prepararemos una corrida financiera adaptada a tu perfil.</p>
+            
+            <form id="whatsappForm" onsubmit="enviarWhatsApp(event)">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="interes">¿Qué solución deseas cotizar?</label>
+                    <select id="interes" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Ahorro para el Retiro (PPR)">Ahorro para el Retiro (PPR)</option>
+                        <option value="Vida Mujer">Vida Mujer</option>
+                        <option value="Vida Pagos Limitados (VPL)">Vida Pagos Limitados (VPL)</option>
+                        <option value="Ahorro para la Educación">Ahorro para la Educación</option>
+                        <option value="Asesoría Integral Completa">Asesoría Integral / Múltiples Opciones</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edad">Tu Edad Actual</label>
+                    <input type="number" id="edad" placeholder="Ej. 30" min="18" max="75" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Preguntas específicas o comentarios</label>
+                    <textarea id="mensaje" rows="3" placeholder="Ej. Me interesa deducir impuestos / quiero el plan a 10 años..."></textarea>
+                </div>
+
+                <button type="submit" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> Enviar Consulta Directa
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Corporativo -->
+    <footer class="footer-asesoras">
+        <div class="footer-content">
+            <div class="cards-row">
+                <div class="asesora-card">
+                    <strong>Lic. en Economía Ivonne Rivera</strong>
+                    <p><i class="fas fa-certificate" style="color: var(--accent); margin-right: 5px;"></i> Asesora Patrimonial y Financiera</p>
+                </div>
+                <div class="asesora-card">
+                    <strong>Actuaria Lorena Valdez Suárez</strong>
+                    <p><i class="fas fa-chart-line" style="color: var(--accent); margin-right: 5px;"></i> Especialista en Análisis de Riesgos y Retiro</p>
+                </div>
+            </div>
+            <p style="font-size: 0.75rem; color: #64748b; margin-top: 15px;">
+                © 2026 Protección y Ahorro Integral. Diseñado con altos estándares de usabilidad.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+
+        function toggleAccordion(button) {
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.animate-fade').forEach((element) => {
+            observer.observe(element);
+        });
+
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+            const telefono = "527221494745"; 
+            const nombre = document.getElementById('nombre').value;
+            const interes = document.getElementById('interes').value;
+            const edad = document.getElementById('edad').value;
+            const mensajeAdicional = document.getElementById('mensaje').value;
+
+            let textoWp = `Hola, mi nombre es *${nombre}* (tengo *${edad}* años).\n\n`;
+            textoWp += `Me gustaría agendar una asesoría sobre el plan de: *${interes}*.`;
+            
+            if (mensajeAdicional.trim() !== "") {
+                textoWp += `\n\n*Nota:* ${mensajeAdicional}`;
+            }
+
+            const urlMensaje = `https://wa.me/${telefono}?text=${encodeURIComponent(textoWp)}`;
+            window.open(urlMensaje, '_blank');
+        }
+    </script>
+</body>
+</html>
