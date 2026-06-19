@@ -11,7 +11,7 @@
     <style>
         :root {
             --primary: #0f2b46;
-            --primary-logo: #1408a6; /* Color azul de tu logo aprox */
+            --primary-logo: #1408a6; /* Color azul del logo */
             --accent: #d4a373;
             --accent-light: #f4f1de;
             --text-dark: #2b2d42;
@@ -59,7 +59,7 @@
             transform: translateY(0);
         }
 
-        /* --- Menú de Navegación (BLANCO PARA TU LOGO) --- */
+        /* --- Menú de Navegación --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -185,109 +185,333 @@
             box-shadow: 0 6px 20px rgba(212, 163, 115, 0.4);
         }
 
-        /* --- Resto del Contenido --- */
-        .section-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* --- Contenedor Principal --- */
+        .section-container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
         
         .intro-quote {
-            max-width: 900px; margin: 60px auto; padding: 40px;
-            text-align: center; background-color: var(--accent-light);
-            border-radius: 20px; font-style: italic; color: var(--primary);
-            font-size: 1.15rem; line-height: 1.8;
+            max-width: 900px; 
+            margin: 60px auto; 
+            padding: 40px;
+            text-align: center; 
+            background-color: var(--accent-light);
+            border-radius: 20px; 
+            font-style: italic; 
+            color: var(--primary);
+            font-size: 1.15rem; 
+            line-height: 1.8;
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
 
         .section-title {
-            text-align: center; margin: 60px 20px 40px; font-size: 2.2rem; color: var(--primary);
-        }
-        .section-title::after {
-            content: ''; display: block; width: 60px; height: 4px;
-            background-color: var(--accent); margin: 10px auto 0; border-radius: 2px;
+            text-align: center; 
+            margin: 60px 20px 40px; 
+            font-size: 2.2rem; 
+            color: var(--primary);
         }
 
+        .section-title::after {
+            content: ''; 
+            display: block; 
+            width: 60px; 
+            height: 4px;
+            background-color: var(--accent); 
+            margin: 10px auto 0; 
+            border-radius: 2px;
+        }
+
+        /* Tarjetas de Planes */
         .plans-grid {
-            display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 60px;
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 30px; 
+            margin-bottom: 60px;
         }
 
         .plan-card {
-            background: #fff; border-radius: 20px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02);
-            display: flex; flex-direction: column; transition: transform 0.3s ease;
+            background: #fff; 
+            border-radius: 20px; 
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            border: 1px solid rgba(0,0,0,0.02);
+            display: flex; 
+            flex-direction: column; 
+            transition: transform 0.3s ease;
         }
-        .plan-card:hover { transform: translateY(-5px); }
 
-        .plan-img { height: 240px; width: 100%; object-fit: cover; }
-        .plan-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
+        .plan-card:hover { 
+            transform: translateY(-5px); 
+        }
+
+        .plan-img { 
+            height: 240px; 
+            width: 100%; 
+            object-fit: cover; 
+        }
+
+        .plan-content { 
+            padding: 30px; 
+            display: flex; 
+            flex-direction: column; 
+            flex-grow: 1; 
+        }
 
         .plan-tag {
-            background-color: rgba(212, 163, 115, 0.15); color: var(--primary);
-            padding: 6px 14px; border-radius: 20px; font-size: 0.8rem;
-            font-weight: 600; align-self: flex-start; margin-bottom: 15px;
+            background-color: rgba(212, 163, 115, 0.15); 
+            color: var(--primary);
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 0.8rem;
+            font-weight: 600; 
+            align-self: flex-start; 
+            margin-bottom: 15px;
         }
 
-        .plan-content h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 12px; }
-        .plan-content p { font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 25px; flex-grow: 1; }
+        .plan-content h3 { 
+            font-size: 1.5rem; 
+            color: var(--primary); 
+            margin-bottom: 12px; 
+        }
 
+        .plan-content p { 
+            font-size: 0.95rem; 
+            color: #555; 
+            line-height: 1.6; 
+            margin-bottom: 25px; 
+            flex-grow: 1; 
+        }
+
+        /* Acordeones */
         .accordion-btn {
-            width: 100%; background: #f1f5f9; border: none; padding: 15px;
-            text-align: left; font-size: 0.9rem; font-weight: 600; color: var(--primary);
-            border-radius: 10px; display: flex; justify-content: space-between;
-            align-items: center; cursor: pointer; transition: all 0.3s;
+            width: 100%; 
+            background: #f1f5f9; 
+            border: none; 
+            padding: 15px;
+            text-align: left; 
+            font-size: 0.9rem; 
+            font-weight: 600; 
+            color: var(--primary);
+            border-radius: 10px; 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center; 
+            cursor: pointer; 
+            transition: all 0.3s;
         }
-        .accordion-btn:hover { background: #e2e8f0; }
-        .accordion-btn i { transition: transform 0.3s; }
-        .accordion-btn.active i { transform: rotate(180deg); }
+
+        .accordion-btn:hover { 
+            background: #e2e8f0; 
+        }
+
+        .accordion-btn i { 
+            transition: transform 0.3s; 
+        }
+
+        .accordion-btn.active i { 
+            transform: rotate(180deg); 
+        }
 
         .accordion-content {
-            max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out;
-            background: #fafafa; border-radius: 0 0 10px 10px;
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease-out;
+            background: #fafafa; 
+            border-radius: 0 0 10px 10px;
         }
-        .case-details { padding: 20px; font-size: 0.9rem; }
-        .case-table { width: 100%; border-collapse: collapse; }
-        .case-table td { padding: 8px 0; border-bottom: 1px dotted #cbd5e1; }
-        .case-table td:last-child { text-align: right; font-weight: 600; color: var(--primary); }
+
+        .case-details { 
+            padding: 20px; 
+            font-size: 0.9rem; 
+        }
+
+        .case-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+        }
+
+        .case-table td { 
+            padding: 8px 0; 
+            border-bottom: 1px dotted #cbd5e1; 
+        }
+
+        .case-table td:last-child { 
+            text-align: right; 
+            font-weight: 600; 
+            color: var(--primary); 
+        }
 
         /* Formulario Contacto */
         .contact-section {
-            background-color: var(--primary); color: var(--text-light);
-            padding: 60px 20px; border-radius: 40px 40px 0 0;
+            background-color: var(--primary); 
+            color: var(--text-light);
+            padding: 60px 20px; 
+            border-radius: 40px 40px 0 0;
         }
-        .contact-container { max-width: 600px; margin: 0 auto; }
-        .contact-section h2 { text-align: center; font-size: 2rem; margin-bottom: 12px; }
-        .contact-section p { text-align: center; font-size: 1rem; font-weight: 300; margin-bottom: 40px; color: #cbd5e1; }
 
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-size: 0.9rem; margin-bottom: 8px; color: var(--accent); font-weight: 600; }
+        .contact-container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+
+        .contact-section h2 { 
+            text-align: center; 
+            font-size: 2rem; 
+            margin-bottom: 12px; 
+        }
+
+        .contact-section p { 
+            text-align: center; 
+            font-size: 1rem; 
+            font-weight: 300; 
+            margin-bottom: 40px; 
+            color: #cbd5e1; 
+        }
+
+        .form-group { 
+            margin-bottom: 25px; 
+        }
+
+        .form-group label { 
+            display: block; 
+            font-size: 0.9rem; 
+            margin-bottom: 8px; 
+            color: var(--accent); 
+            font-weight: 600; 
+        }
+
         .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 16px; border: 1px solid rgba(255,255,255,0.15);
-            background-color: rgba(255,255,255,0.05); border-radius: 12px; color: white;
-            font-size: 1rem; outline: none; transition: all 0.3s;
+            width: 100%; 
+            padding: 16px; 
+            border: 1px solid rgba(255,255,255,0.15);
+            background-color: rgba(255,255,255,0.05); 
+            border-radius: 12px; 
+            color: white;
+            font-size: 1rem; 
+            outline: none; 
+            transition: all 0.3s;
         }
+
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--accent); background-color: rgba(255,255,255,0.1);
+            border-color: var(--accent); 
+            background-color: rgba(255,255,255,0.1);
         }
-        .form-group select option { background-color: var(--primary); color: white; }
+
+        .form-group select option { 
+            background-color: var(--primary); 
+            color: white; 
+        }
 
         .whatsapp-btn {
-            width: 100%; background-color: var(--success); color: white; border: none;
-            padding: 18px; border-radius: 50px; font-size: 1.1rem; font-weight: 600;
-            display: flex; justify-content: center; align-items: center; gap: 12px;
-            cursor: pointer; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: all 0.3s;
+            width: 100%; 
+            background-color: var(--success); 
+            color: white; 
+            border: none;
+            padding: 18px; 
+            border-radius: 50px; 
+            font-size: 1.1rem; 
+            font-weight: 600;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 12px;
+            cursor: pointer; 
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); 
+            transition: all 0.3s;
         }
-        .whatsapp-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
+
+        .whatsapp-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); 
+        }
 
         /* Footer */
-        .footer-asesoras { background-color: #0b1f33; padding: 40px 20px; color: #94a3b8; font-size: 0.9rem; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
-        .cards-row { display: flex; flex-direction: column; gap: 20px; width: 100%; }
-        .asesora-card { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border-left: 3px solid var(--accent); }
-        .asesora-card strong { color: white; display: block; font-size: 1.1rem; margin-bottom: 5px; }
+        .footer-asesoras { 
+            background-color: #0b1f33; 
+            padding: 50px 20px; 
+            color: #94a3b8; 
+            font-size: 0.9rem; 
+        }
+
+        .footer-content { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 30px; 
+            text-align: center; 
+        }
+
+        .cards-row { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+            width: 100%; 
+            align-items: center;
+        }
+
+        .asesora-card { 
+            background: rgba(255,255,255,0.03); 
+            padding: 30px; 
+            border-radius: 16px; 
+            border-left: 4px solid var(--accent);
+            max-width: 500px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .asesora-card strong { 
+            color: white; 
+            display: block; 
+            font-size: 1.2rem; 
+            margin-bottom: 10px; 
+        }
+
+        .asesora-card p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .asesora-card p i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .asesora-card p a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .asesora-card p a:hover {
+            color: var(--accent);
+        }
 
         /* WP Float */
         .floating-wp {
-            position: fixed; bottom: 25px; right: 25px; background-color: var(--success); color: white;
-            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center;
-            align-items: center; font-size: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 999; text-decoration: none; animation: pulse 2s infinite;
+            position: fixed; 
+            bottom: 25px; 
+            right: 25px; 
+            background-color: var(--success); 
+            color: white;
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            font-size: 2rem; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 999; 
+            text-decoration: none; 
+            animation: pulse 2s infinite;
         }
 
         /* MEDIA QUERIES (Responsivo) */
@@ -295,8 +519,7 @@
             .menu-toggle { display: none; }
             .plans-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
             .hero h1 { font-size: 3.8rem; }
-            .cards-row { flex-direction: row; justify-content: center; gap: 40px; }
-            .asesora-card { flex: 1; max-width: 400px; text-align: left; }
+            .cards-row { flex-direction: row; justify-content: center; }
         }
 
         @media (max-width: 767px) {
@@ -315,17 +538,17 @@
 <body>
 
     <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/527221494745?text=Hola,%20me%20gustaría%20recibir%20asesoría%20sobre%20sus%20planes%20de%20seguro%20y%20ahorro." class="floating-wp" target="_blank">
+    <a href="https://wa.me/527221494745?text=Hola,%20me%20gustaría%20recibir%20asesoría%20sobre%20sus%20planes%20de%20seguro%20y%20ahorro." class="floating-wp" target="_blank" aria-label="Contacto por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Navbar Superior Blanco -->
     <nav class="navbar">
         <a href="#" class="nav-logo">
-            <!-- AQUÍ VA TU LOGO: Solo asegúrate de que se llame logo.png y esté en la misma carpeta -->
-            <img src="logo.png" alt="Ivonne Rivera - Asesor en Seguros" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <!-- AQUÍ VA TU LOGO: se llamará logo.png y se cargará automáticamente si está en el mismo directorio -->
+            <img src="logo.png" alt="Ivonne Rivera - Asesora en Seguros" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             
-            <!-- Este texto solo aparece si no encuentra el archivo logo.png -->
+            <!-- Texto alternativo de respaldo si la imagen logo.png aún no se carga o no existe -->
             <div class="logo-fallback" style="display: none;">
                 I | R<br>
                 <span>IVONNE RIVERA</span>
@@ -365,7 +588,7 @@
                     <div class="plan-content">
                         <span class="plan-tag">Retiro y Beneficios Fiscales</span>
                         <h3>Ahorro para el Retiro (PPR)</h3>
-                        <p>No trabajes toda tu vida para depender de una pensión insuficiente. Construye tu propio fondo, protege a tu familia y aprovecha deducciones fiscales.</p>
+                        <p>No trabajes toda tu vida para depender de una pensión insuficiente. Construye tu propio fondo, protege a tu familia y aprovecha deducciones fiscales para recuperar impuestos.</p>
                         
                         <button class="accordion-btn" onclick="toggleAccordion(this)">
                             Ver Caso Práctico (Sebastián - 43 años) <i class="fas fa-chevron-down"></i>
@@ -373,10 +596,11 @@
                         <div class="accordion-content">
                             <div class="case-details">
                                 <table class="case-table">
-                                    <tr><td>Aportación Mensual:</td><td>$4,042 MXN</td></tr>
-                                    <tr><td>Plazo:</td><td>10 años</td></tr>
-                                    <tr><td>Deducción Año 1:</td><td>$48,500 MXN</td></tr>
-                                    <tr><td>Fondo Estimado (65 años):</td><td>$1,504,674 MXN</td></tr>
+                                    <tr><td>Aportación Mensual aprox:</td><td>$4,042 MXN</td></tr>
+                                    <tr><td>Plazo de aportación:</td><td>10 años</td></tr>
+                                    <tr><td>Deducción Fiscal Año 1:</td><td>$48,500 MXN</td></tr>
+                                    <tr><td>Suma Asegurada Fallecimiento:</td><td>75,000 UDIS</td></tr>
+                                    <tr><td>Fondo Estimado Edad 65:</td><td>$1,504,674 MXN</td></tr>
                                 </table>
                             </div>
                         </div>
@@ -389,7 +613,7 @@
                     <div class="plan-content">
                         <span class="plan-tag">Protección Especializada</span>
                         <h3>Vida Mujer</h3>
-                        <p>Diseñada para los riesgos que una mujer puede enfrentar: cáncer femenino, padecimientos ginecológicos y embarazo, combinando protección y ahorro.</p>
+                        <p>Diseñada específicamente para las etapas y riesgos de la mujer: cobertura ante cáncer femenino, padecimientos ginecológicos y complicaciones de embarazo, combinando ahorro.</p>
                         
                         <button class="accordion-btn" onclick="toggleAccordion(this)">
                             Ver Caso Práctico (Elisa - 37 años) <i class="fas fa-chevron-down"></i>
@@ -397,10 +621,10 @@
                         <div class="accordion-content">
                             <div class="case-details">
                                 <table class="case-table">
-                                    <tr><td>Aportación Mensual:</td><td>$2,341 MXN</td></tr>
-                                    <tr><td>Retornos cada 2 años:</td><td>5% Suma Asegurada</td></tr>
+                                    <tr><td>Aportación Mensual aprox:</td><td>$2,341 MXN</td></tr>
+                                    <tr><td>Retornos cada 2 años (desde año 5):</td><td>5% Suma Asegurada</td></tr>
                                     <tr><td>Final del plazo recibes:</td><td>80% Suma Asegurada</td></tr>
-                                    <tr><td>Total Recibido:</td><td>115% Suma Asegurada</td></tr>
+                                    <tr><td>Total Recibido Plan:</td><td>115% Suma Asegurada</td></tr>
                                 </table>
                             </div>
                         </div>
@@ -413,7 +637,7 @@
                     <div class="plan-content">
                         <span class="plan-tag">Legado Garantizado</span>
                         <h3>Vida Pagos Limitados (VPL)</h3>
-                        <p>Planifica tus aportaciones en un periodo programado (10 años) para gozar de protección vitalicia. Opción a cobertura ante cáncer.</p>
+                        <p>Planifica tus aportaciones en un periodo programado y corto (10 años) para gozar de protección vitalicia. Cuenta además con respaldo económico opcional ante cáncer.</p>
                         
                         <button class="accordion-btn" onclick="toggleAccordion(this)">
                             Ver Caso Práctico (Guillermo - 25 años) <i class="fas fa-chevron-down"></i>
@@ -421,10 +645,10 @@
                         <div class="accordion-content">
                             <div class="case-details">
                                 <table class="case-table">
-                                    <tr><td>Aportación Mensual:</td><td>$2,045 MXN</td></tr>
-                                    <tr><td>Plazo obligatorio:</td><td>10 años</td></tr>
-                                    <tr><td>Suma Asegurada:</td><td>90,000 UDIS</td></tr>
-                                    <tr><td>Retiro (63 años):</td><td>$2,551,565 MXN</td></tr>
+                                    <tr><td>Aportación Mensual aprox:</td><td>$2,045 MXN</td></tr>
+                                    <tr><td>Plazo de aportación obligatorio:</td><td>10 años</td></tr>
+                                    <tr><td>Suma Asegurada Fallecimiento:</td><td>90,000 UDIS</td></tr>
+                                    <tr><td>Cancelación / Retiro Edad 63:</td><td>$2,551,565 MXN</td></tr>
                                 </table>
                             </div>
                         </div>
@@ -437,7 +661,7 @@
                     <div class="plan-content">
                         <span class="plan-tag">Garantía Educativa</span>
                         <h3>Ahorro para la Educación</h3>
-                        <p>Construye el capital para la universidad de tus hijos. Si llegas a faltar, la meta de ahorro se entrega intacta cuando cumplan 18 años.</p>
+                        <p>Construye con certeza el capital necesario para la universidad de tus hijos. Si tú llegaras a faltar, el plan se mantiene activo sin más aportaciones.</p>
                         
                         <button class="accordion-btn" onclick="toggleAccordion(this)">
                             Ver Caso Práctico (Lía - 1 año) <i class="fas fa-chevron-down"></i>
@@ -445,10 +669,10 @@
                         <div class="accordion-content">
                             <div class="case-details">
                                 <table class="case-table">
-                                    <tr><td>Aportación Mensual:</td><td>$1,967 MXN</td></tr>
-                                    <tr><td>Plazo de ahorro:</td><td>17 años</td></tr>
+                                    <tr><td>Aportación Mensual aprox:</td><td>$1,967 MXN</td></tr>
+                                    <tr><td>Plazo de ahorro activo:</td><td>17 años</td></tr>
                                     <tr><td>Suma Asegurada:</td><td>50,000 UDIS</td></tr>
-                                    <tr><td>Entrega (18 años):</td><td>$820,649 MXN</td></tr>
+                                    <tr><td>Entrega al cumplir 18 años:</td><td>$820,649 MXN</td></tr>
                                 </table>
                             </div>
                         </div>
@@ -463,7 +687,7 @@
     <section class="contact-section" id="contacto">
         <div class="contact-container">
             <h2>Solicita tu Asesoría Personalizada</h2>
-            <p>Déjanos tus datos mínimos y prepararemos una corrida financiera adaptada a tu perfil.</p>
+            <p>Déjanos tus datos mínimos y prepararemos una propuesta financiera adaptada a tu perfil.</p>
             
             <form id="whatsappForm" onsubmit="enviarWhatsApp(event)">
                 <div class="form-group">
@@ -506,15 +730,22 @@
             <div class="cards-row">
                 <div class="asesora-card">
                     <strong>Lic. en Economía Ivonne Rivera</strong>
-                    <p><i class="fas fa-certificate" style="color: var(--accent); margin-right: 5px;"></i> Asesora Patrimonial y Financiera</p>
-                </div>
-                <div class="asesora-card">
-                    <strong>Actuaria Lorena Valdez Suárez</strong>
-                    <p><i class="fas fa-chart-line" style="color: var(--accent); margin-right: 5px;"></i> Especialista en Análisis de Riesgos y Retiro</p>
+                    <p>
+                        <i class="fas fa-certificate"></i> 
+                        Asesora Patrimonial y Financiera Profesional
+                    </p>
+                    <p>
+                        <i class="fas fa-phone"></i> 
+                        <a href="tel:7221494745">722 149 4745</a>
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope"></i> 
+                        <a href="mailto:lpp.asesor@gmail.com">lpp.asesor@gmail.com</a>
+                    </p>
                 </div>
             </div>
             <p style="font-size: 0.75rem; color: #64748b; margin-top: 15px;">
-                © 2026 Protección y Ahorro Integral. Diseñado con altos estándares de usabilidad.
+                © 2026 Ivonne Rivera | Protección y Ahorro Integral. Diseñado con altos estándares de usabilidad.
             </p>
         </div>
     </footer>
@@ -564,8 +795,8 @@
             const edad = document.getElementById('edad').value;
             const mensajeAdicional = document.getElementById('mensaje').value;
 
-            let textoWp = `Hola, mi nombre es *${nombre}* (tengo *${edad}* años).\n\n`;
-            textoWp += `Me gustaría agendar una asesoría sobre el plan de: *${interes}*.`;
+            let textoWp = `Hola Ivonne, mi nombre es *${nombre}* (tengo *${edad}* años).\n\n`;
+            textoWp += `Me interesó mucho la información de tu página web y quiero solicitar una asesoría personalizada sobre el plan de *${interes}*.`;
             
             if (mensajeAdicional.trim() !== "") {
                 textoWp += `\n\n*Nota:* ${mensajeAdicional}`;
